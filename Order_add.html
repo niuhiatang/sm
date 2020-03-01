@@ -1,0 +1,535 @@
+﻿<extend name="Public/base"/>
+<block name="main">
+<script>
+ function removeQcode(i){
+	setTimeout(function(){$('.qcode').remove();},2000);
+  var imgs = i.contentWindow.document.getElementsByTagName('img');
+  var body = i.contentWindow.document.getElementsByTagName('body');
+  body[0].style.margin = 0;
+  body[0].style.padding = 0;
+  for(var i=0;i<imgs.length;i++){
+     imgs[i].style.margin = '17px';
+     
+  }
+
+}
+
+ </script> 
+<script src="__HOMESTYLE__/js/scroll.js" ></script>
+<style type="text/css">
+  .min-width {
+    width: 1000px !important;
+    margin: 0 auto !important;
+    text-align: center;
+    display: inherit;
+    
+}
+.STYLE1 {font-weight: bold}
+</style>
+<div id="container" class="container"> 
+  <!-- 基本信息 -->
+  <div class="index-section basic-info case-wrap index-section1" style="margin:0">
+    <div class="sj_margin"></div>
+    <div class="min-width">
+      <div class="top">
+        <div class="top-title"> <img src="__HOMESTYLE__/picture/index_30.png" /> </div>
+      </div>
+      <div class="section section1">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="25%"><label><strong>起名姓氏</strong></label></td>
+            <td colspan="2"><span>{$info['name']}</span></td>
+            <td><label>性别</label></td>
+            <td><span>{$info['gender']}</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>出生日期</strong></label></td>
+            <td colspan="4"><span>{$info['birthdayy']}年{$info['birthdaym']}月{$info['birthdayd']}日  {$info['birthdayh']}时{$info['birthdayi']}分</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>出生公历</strong></label></td>
+            <td><span>{$info['birthdayy']}年</span></td>
+            <td><span>{$info['birthdaym']}月</span></td>
+            <td><span>{$info['birthdayd']}日</span></td>
+            <td><span>{$info['birthdayh']}点</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>出生农历</strong></label></td>
+            <td><span>{$nongli[3]}年</span></td>
+            <td><span>{$nongli[1]}</span></td>
+            <td><span>{$nongli[2]}</span></td>
+            <td><span class="l4"></span></td>
+          </tr>
+          <tr>
+            <td><label><strong>生辰八字</strong></label></td>
+            <td><span>{$bazi[0]}</span></td>
+            <td><span>{$bazi[1]}</span></td>
+            <td><span>{$bazi[2]}</span></td>
+            <td><span>{$bazi[3]}</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>纳音五行</strong></label></td>
+            <td><span>{$nayin[0]}</span></td>
+            <td><span>{$nayin[1]}</span></td>
+            <td><span>{$nayin[2]}</span></td>
+            <td><span>{$nayin[3]}</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>八字五行个数</strong></label></td>
+            <td colspan="4"><span>{$bzwxgs}</span></td>
+          </tr>
+          <tr>
+            <td><label><strong>五气成分指数</strong></label></td>
+            <td colspan="4"><span>{$wqcfzs}</span></td>
+          </tr>
+		  <volist name="qr" id="q">
+          <tr>
+            <td><span class="STYLE1">
+              <label>{$q[0]}</label>
+            </span></td>
+            <td><span>{$q[1]} %</span></td>
+            <td colspan="3" align="left"><span>{$q[2]}</span></td>
+          </tr>
+		  </volist>
+
+          <tr>
+            <td><label><strong>强弱总比值</strong></label></td>
+            <td><span><php>echo round($zh,2)</php> %</span></td>
+            <td colspan="3" align="left"><span>{$qrzh}</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- 基本信息结束 --> 
+  <div class="index-section basic-info case-wrap index-section1" style="padding-top:0">
+    <div class="sj_margin"></div>
+    <div class="min-width">
+      <div class="top" style="text-align:center;height:100px;background-color:none">
+        <div style="text-align:center;height:100px;color:#FE7800;font-size:22px;padding-top:5px;">八项命理运势精准分析<br><img src="__HOMESTYLE__/images/dd_h4.png" style="margin-top:5px;"/> </div>
+      </div>
+      <div class="section section1">
+        <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="25%"><label><strong>命局分析</strong></label></td>
+            <td colspan="4" rowspan="8" style="background:url('/Public/Home/images/pay_01.png') repeat-y top center;position:relative;" align="center">
+			<a class="payBtn" href="javascript:;" style="width:400px;"> <i></i> <span style="color:#fff;font-size:20px;">立即解锁美名与八项命理运势</span> </a></td>
+          </tr>
+          <tr>
+            <td><label><strong>功名富贵</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>适合事业</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>人生贵人</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>文昌位</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>幸运色彩</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>幸运数字</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+          <tr>
+            <td><label><strong>吉祥方位</strong></label></td>
+            <td colspan="4"></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+    <a href="http://name.88yifu.com/order/mlist.html?orderno=CS152377668747242" target="_blank"><div class="bottom-wrap"></div></a>
+  </div>
+  
+  <!-- 支付 -->
+  <div class="index-section pay-wrap">
+    <div class="min-width">
+      <div class="pay-title">付款后查看全部取名方案与八项命理指导</div>
+      <div class="pay-info">
+        <p class="pay-price"> <span class="old-price">原价：{$info['oldprice']}元</span> <span class="new-price">优惠价：<strong>{$info['price']}</strong>元</span> </p>
+        <p class="spay-order">支付单号：<span> <font id='ordernumber' types='易经起名'>{$info['orderNo']}</font></span></p>
+        <p class="spay-user"> <span>姓氏：<font id='fullname'>{$info['name']}</font></span> <i>/</i> <span>性别：{$info['gender']}</span> <i>/</i> <span class="span1">生辰：{$info['birthdayy']}年{$info['birthdaym']}月{$info['birthdayd']}日  {$info['birthdayh']}时{$info['birthdayi']}分</span> </p>
+      </div>
+      <ul class="pay-btn">
+        <li class="active" data-img="/pstyle/paystyle21/img/wx1.png"><i></i></li>
+        <li id="alipaytab" class="" data-img="/pstyle/paystyle21/img/wx1.png"><i></i></li>
+      </ul>
+      <div class="pay-qrcode">
+        <div class="left"> 
+          <!-- 微信二维码 -->
+          <div class="qrcode" style='background:#fff;'>
+           
+            <div style='width:201px;height:201px;' id='wx'  url="{:U('pay/wxpay',array('orderno'=>$info['orderNo']))}">
+              <div class='qcode' style='position: absolute;'> <img src='/Application/Home/View/Public/1.png' style='width: 200px;height: 201px;'> </div>
+              
+              <iframe src="" class='getqr' onload="removeQcode(this)" style='width:100%;height:100%' frameborder="0"></iframe>
+            
+            </div>
+          </div>
+          <dl>
+            <dt></dt>
+            <dd class="first">请用<span>微信</span>扫一扫</dd>
+            <dd>扫描二维码支付</dd>
+          </dl>
+        </div>
+        <div class="right"> <img src="__HOMESTYLE__/picture/wx1.png"/> </div>
+      </div>
+      <div style=" float:none; color:#FF0000; margin-left:awidth:1002px;margin-top:-35px;margin-bottom:10px;"><img src="__HOMESTYLE__/picture/998.png" align="middle"></div>
+      <div class="wxzf" style=''>
+        <p style='' >支付后请耐心等待10秒钟出名字：</p>
+        <div id='showdetail' style=''>查看订单详情</div>
+      </div>
+      <div class="bottom-btn" id='payend' style='display:none'>
+        <div class="pay-result payresult">我已支付成功</div>
+        <div class="pay-result payresult">支付失败</div>
+      </div>
+    </div>
+  </div>
+  <!-- 支付结束 -->
+  
+  <!-- 评论、问题-->
+  <div class=" evaluate" name='evaluate' id='evaluate'>
+
+<div class="">
+	<div class="hprc" id="pj">
+	  <div class="w1000"> 
+		<img src="__HOMESTYLE__/images/bazi.png" style="margin:0 auto;">
+		<div class="l">
+		  <h1>在线评价<span><img src="__HOMESTYLE__/picture/x.png"><img src="__HOMESTYLE__/picture/x.png"><img src="__HOMESTYLE__/picture/x.png"><img src="__HOMESTYLE__/picture/x.png"><img src="__HOMESTYLE__/picture/x.png"></span></h1>
+		  <div class="pj_title"> <span href="">名字很好(980)</span> <span href="">名字好听(850)</span> <span href="">分析准确(740)</span> <span href="">态度很好(680)</span> <span href="">寓意深刻(520)</span> <span href="">大气响亮(490)</span> <span href="">打分很高(370)</span> <span href="">专业可信(220)</span> </div>
+		  <div class="hd" id="demoxj">
+			<ul>
+			  <li><span>订单号</span><span>CS152068862555055 评论：</span></li>
+			  <li>这家网站起名考虑得很全面，名字分数很高，和八字结合得很好，强烈推荐</li>
+			  <li><span>订单号</span><span>CS1521*****2263 评论：</span></li>
+			  <li>八字分析很专业，起到了很多好名字，目前还不知道选择哪个名字。</li>
+			  <li><span>订单号</span><span>CS1521*****0123 评论：</span></li>
+			  <li>朋友介绍过来的，果然是很棒的起名网站，好几百个吉祥的名字给我选择，</li>
+			  <li><span>订单号</span><span>CS1521*****0189 评论：</span></li>
+			  <li>这家起名网站很专业，帮我起了好几批名字，最终选到了满意的好名字，</li>
+			  <li><span>订单号</span><span>CS1521*****2565 评论：</span></li>
+			  <li>不愧是中国权威的起名网站，起的名字很大气，个个都是100分的好名字</li>
+			  <li><span>订单号</span><span>CS1521*****2333 评论：</span></li>
+			  <li>还不错，起的名字很满意，老公很喜欢，五星好评！</li>
+			  <li><span>订单号</span><span>CS1521*****5562 评论：</span></li>
+			  <li>随便试试，哪知道付款后，得出的名字让我有点吃惊，竟然有这么多有寓意的名字</li>
+			  <li><span>订单号</span><span>CS1521*****2356 评论：</span></li>
+			  <li>刚支付完有点质疑，后来我把起的名字给别的大师看，大师说这名字很好，我就放心了</li>
+			  <li><span>订单号</span><span>CS1521*****5566 评论：</span></li>
+			  <li> 宝宝出生，急需名字办理出生证，没想到这么快就起了这么多好名字给我选择</li>
+			  <li><span>订单号</span><span>CS1521*****4489 评论：</span></li>
+			  <li>名字很好，不俗气，听起来就很有气质！这家起名网站值得推荐</li>
+			  <li><span>订单号</span><span>CS1521*****5689 评论：</span></li>
+			  <li>起名很权威，好多名字都是出自楚辞诗经，</li>
+			  <li><span>订单号</span><span>CS1521*****1256 评论：</span></li>
+			  <li>起到的好名字太多了，现在还没有确定选择哪个名字，</li>
+			  <li><span>订单号</span><span>CS1521*****8942 评论：</span></li>
+			  <li>之前找了好几家起名网站，都没有起到满意的名字，最后在周易起名网选到了心仪的名字</li>
+			  <li><span>订单号</span><span>CS1521*****2365 评论：</span></li>
+			  <li>一个同事介绍来的，给宝宝取的 家人都满意 很专业</li>
+			  <li><span>订单号</span><span>CS1521*****1256 评论：</span></li>
+			  <li>客服很有耐心，不厌其烦的帮我分析名字，服务态度值得称赞</li>
+			  <li><span>订单号</span><span>CS1521*****5986 评论：</span></li>
+			  <li>很不错，名字我们也很中意，谢谢了，会介绍给朋友的。</li>
+			  <li><span>订单号</span><span>CS1521*****5698 评论：</span></li>
+			  <li>起的名字很好，不俗气，也很清新，很有个性</li>
+			  <li><span>订单号</span><span>CS1521*****2354 评论：</span></li>
+			  <li>出结果很快，从众多名字中选了两个,家人都很满意</li>
+			  <li><span>订单号</span><span>CS1521*****0101 评论：</span></li>
+			  <li>名字评分都很高，原来29元就可以起这么多好名字</li>
+			  <li><span>订单号</span><span>CS1521*****0145 评论：</span></li>
+			  <li>开始看价格很便宜，担心起的名字不好，最后还是找易福起名网起到满意的名字了</li>
+			  <li><span>订单号</span><span>CS152068862555055 评论：</span></li>
+			  <li>这家网站起名考虑得很全面，名字分数很高，和八字结合得很好，强烈推荐</li>
+			  <li><span>订单号</span><span>CS1521*****2263 评论：</span></li>
+			  <li>八字分析很专业，起到了很多好名字，目前还不知道选择哪个名字。</li>
+			  <li><span>订单号</span><span>CS1521*****0123 评论：</span></li>
+			  <li>朋友介绍过来的，果然是很棒的起名网站，好几百个吉祥的名字给我选择，</li>
+			  <li><span>订单号</span><span>CS1521*****0189 评论：</span></li>
+			  <li>这家起名网站很专业，帮我起了好几批名字，最终选到了满意的好名字，</li>
+			  <li><span>订单号</span><span>CS1521*****2565 评论：</span></li>
+			  <li>不愧是中国权威的起名网站，起的名字很大气，个个都是100分的好名字</li>
+			  <li><span>订单号</span><span>CS1521*****2333 评论：</span></li>
+			  <li>还不错，起的名字很满意，老公很喜欢，五星好评！</li>
+			  <li><span>订单号</span><span>CS1521*****5562 评论：</span></li>
+			  <li>随便试试，哪知道付款后，得出的名字让我有点吃惊，竟然有这么多有寓意的名字</li>
+			  <li><span>订单号</span><span>CS1521*****2356 评论：</span></li>
+			  <li>刚支付完有点质疑，后来我把起的名字给别的大师看，大师说这名字很好，我就放心了</li>
+			  <li><span>订单号</span><span>CS1521*****5566 评论：</span></li>
+			  <li> 宝宝出生，急需名字办理出生证，没想到这么快就起了这么多好名字给我选择</li>
+			  <li><span>订单号</span><span>CS1521*****4489 评论：</span></li>
+			  <li>名字很好，不俗气，听起来就很有气质！这家起名网站值得推荐</li>
+			  <li><span>订单号</span><span>CS1521*****5689 评论：</span></li>
+			  <li>陈老师起名很有水平，很有文化内涵，字写得也超级漂亮，一看就是与众不同。</li>
+			  <li><span>订单号</span><span>CS1521*****1256 评论：</span></li>
+			  <li>起到的好名字太多了，都是心仪的名字，不知道要选那个，晚上家人投票决定。</li>
+			  <li><span>订单号</span><span>CS1521*****8942 评论：</span></li>
+			  <li>之前找了好几家起名网站，都没有起到满意的名字，最后在易福起名网选到了。</li>
+			  <li><span>订单号</span><span>CS1521*****2365 评论：</span></li>
+			  <li>一个朋友介绍来的，给宝宝取的 家人都满意 很专业</li>
+			  <li><span>订单号</span><span>CS1521*****1256 评论：</span></li>
+			  <li>大师很有耐心，不厌其烦的帮我解释，服务态度值得称赞</li>
+			  <li><span>订单号</span><span>CS1521*****5986 评论：</span></li>
+			  <li>很不错，名字我们也很中意，谢谢了，下次我妹小孩还找你们。</li>
+			  <li><span>订单号</span><span>CS1521*****5698 评论：</span></li>
+			  <li>起的名字很好，高大上，很有个性，我挑了个满分的，呵呵。</li>
+			  <li><span>订单号</span><span>CS1521*****2354 评论：</span></li>
+			  <li>出结果很快，半个钟就选到了最满意的名字，老公也很满意</li>
+			  <li><span>订单号</span><span>CS1521*****0101 评论：</span></li>
+			  <li>名字合八字又高分，真是不错，强烈推荐！</li>
+			  <li><span>订单号</span><span>CS1521*****0145 评论：</span></li>
+			  <li>不错，名字起的果然不错，谢谢大师用心了。</li>
+			</ul>
+		  </div>
+		  <div class="form">
+			<div class="div">
+			  <label>我的订单号：</label>
+			  <div>
+				<input type="text">
+			  </div>
+			</div>
+			<div class="div">
+			  <label>我的评论语：</label>
+			  <div>
+				<textarea rows="3" cols="20"></textarea>
+			  </div>
+			</div>
+			<div class="div">
+			  <button onClick="javascript:alert('您输入的订单号错误');">提交评论</button>
+			</div>
+		  </div>
+		</div>
+		<div class="r">
+		  <h1>最近3天成交订单</h1>
+		  <div id="nxt">
+			<ul>
+			  <li><script>getBeforeDate()</script> </li>
+			  <li>周易起名 CS1521****38084  29元 </li>
+			  <li>周易起名 CS1521****23876  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****48211  29元 </li>
+			  <li>周易起名 CS1521****21677  29元 </li>
+			  <li>周易起名 CS1521****53868  29元 </li>
+			  <li>周易起名 CS1521****48697  29元 </li>
+			  <li>周易起名 CS1521****14973  29元 </li>
+			  <li>周易起名 CS1521****17576  29元 </li>
+			  <li>周易起名 CS1521****17827  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****38084  29元 </li>
+			  <li>周易起名 CS1521****23876  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****48211  29元 </li>
+			  <li>周易起名 CS1521****21677  29元 </li>
+			  <li>周易起名 CS1521****53868  29元 </li>
+			  <li>周易起名 CS1521****48697  29元 </li>
+			  <li>周易起名 CS1521****14973  29元 </li>
+			  <li>周易起名 CS1521****17576  29元 </li>
+			  <li>周易起名 CS1521****17827  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****38084  29元 </li>
+			  <li>周易起名 CS1521****23876  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****48211  29元 </li>
+			  <li>周易起名 CS1521****21677  29元 </li>
+			  <li>周易起名 CS1521****53868  29元 </li>
+			  <li>周易起名 CS1521****48697  29元 </li>
+			  <li>周易起名 CS1521****14973  29元 </li>
+			  <li>周易起名 CS1521****17576  29元 </li>
+			  <li>周易起名 CS1521****17827  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35087  29元 </li>
+			  <li>周易起名 CS1521****23064  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35067  29元 </li>
+			  <li>周易起名 CS1521****23068  29元 </li>
+			  <li>周易起名 CS1521****38048  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35067  29元 </li>
+			  <li>周易起名 CS1521****23068  29元 </li>
+			  <li>周易起名 CS1521****38048  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****17568  29元 </li>
+			  <li>周易起名 CS1521****65615  29元 </li>
+			  <li>周易起名 CS1521****68261  29元 </li>
+			  <li>周易起名 CS1521****38046  29元 </li>
+			  <li>周易起名 CS1521****23006  29元 </li>
+			  <li>周易起名 CS1521****35067  29元 </li>
+			  <li>周易起名 CS1521****23068  29元 </li>
+			  <li>周易起名 CS1521****38048  29元 </li>
+			</ul>
+		  </div>
+		  <div class="cx">
+			  <input type="text" name="dingdanhao"  placeholder="请输入您17位数的订单号"/>
+			  <button onClick="javascript:alert('您输入的订单号错误');" type="submit">订单查询</button>
+		  </div>
+		</div>
+	  </div>
+	</div>
+</div>
+
+	
+<script type="text/javascript" src="__HOMESTYLE__/js/scroll_s.js" ></script> 
+<script type="text/javascript">
+       		$(function () {
+	            $("#demoxj").myScroll({
+	            speed: 40, //数值越大，速度越慢
+	            rowHeight: 30 //li的高度
+	            });
+	             $("#nxt").myScroll({
+	            speed: 40, //数值越大，速度越慢
+	            rowHeight: 30 //li的高度
+	            });
+	        });	     
+</script>
+<script>
+			$(function(){	
+      
+				$('.comment-wrap .item-wrap').Scroll({
+			        speed: 40, 
+			        direction: 'y'
+		    	});
+		    	
+		    	$(".case-wrap").click(function(){
+		    		$("html,body").animate({
+		    			scrollTop: $(".pay-wrap").offset().top
+		    		},1500);
+				});
+				
+				$('#showdetail').click(function(){
+					//location.href='./read?ordernum=CS171212110335222';
+          location.href="{:U('order/readx', array('orderno'=>$info['orderNo']))}";
+				})
+		    	
+			});
+		</script> 
+<script src="__HOMESTYLE__/js/ntog.js"></script> 
+<script src="__HOMESTYLE__/js/localdata.js"></script> 
+<script type="text/javascript">
+	$('.spayBtn li').each(function(){
+    	$(this).click(function(){
+    		$(this).addClass('active').siblings().removeClass('active');
+            payType = $(this).attr('paytype');
+            $('.spayerC').hide();
+            $('.spayerC[data-pay|="'+payType+'"]').show();
+    	});
+    });
+	if($('#sPay').length){	
+    	$('.bins_btn,#btns li').click(function(){
+            $('html, body').animate({  
+                scrollTop:  $('#sPay').offset().top
+            }, 1000);  
+    	});
+    }
+
+	 
+	
+
+	function showqrcode( ){
+		//var wx=$('#wx').attr('url')+"&device="+getdevtype()+"&time="+(getrnd());
+    var wx=$('#wx').attr('url');
+		$('#wx').find('iframe').attr('src',wx); 
+		
+	}
+
+
+	function getdevtype(){
+		if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
+			return 'ios';
+		} else if (/(Android)/i.test(navigator.userAgent)) {
+			return 'android';
+		} else {
+			return 'pc';
+		};
+	}
+	function getrnd(){
+		return (+new Date())+Math.random();
+	}
+	
+ 
+	function setLtime(){
+		var _s = calendar.solar2lunar({$info['birthdayy']},{$info['birthdaym']},{$info['birthdayd']});
+		$('.l1').html(_s.gzYear+'年');
+		$('.l2').html(_s.IMonthCn);
+		$('.l3').html(_s.IDayCn);
+		$('.l4').html(Hcovert("{$info['birthdayh']}"));
+	}
+	$(function(){
+
+		setLtime();
+		 
+		showqrcode();
+		setTimeout(function() {
+			checkorder();
+			//$('#payend').show();
+		}, 10000);
+		 
+
+		$('.payresult').click(function(){
+			location.reload();
+		})
+		$(".pays").click(function(){
+			$("html,body").animate({scrollTop: $("#pays").offset().top}, 500);
+		})
+
+    $("#alipaytab").click(function(){
+      window.open("{:U('pay/alipay',array('orderno'=>$info['orderNo']))}");
+    })
+		
+	})
+
+
+	function checkorder(){
+		
+		$.get('{:U("order/orderstate", array("orderno"=>$info["orderNo"]))}',function(d){
+			if(d.code==1){
+				setTimeout(function() {
+					location.href='{:U("order/mlist", array("orderno"=>$info["orderNo"]))}';
+				}, 3000);
+			}
+			setTimeout(function() {
+				checkorder();
+			}, 4000);
+		},'json');
+	}
+
+
+	
+</script>
+</block>
